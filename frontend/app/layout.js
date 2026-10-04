@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Toaster } from "sonner";
+import { neobrutalism } from "@clerk/ui/themes";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +17,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.className}`}>
-        <ClerkProvider>
+        <ClerkProvider
+          appearance={{
+            theme: neobrutalism,
+          }}
+        >
           <Header />
           <main className="min-h-screen">{children}</main>
           <footer className="py-8 px-4 border-t">

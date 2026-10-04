@@ -1,12 +1,27 @@
 import React from "react";
 import { Button } from "./ui/button";
+import Link from "next/link";
+import Image from "next/image";
 import { Show, SignInButton, SignUpButton, UserButton } from "@clerk/nextjs";
 
-const Header = () => {
+const Header = async () => {
+  const user = null; // Replace with actual user authentication logic
   return (
     <header className="fixed top-0 w-full border-b border-stone-200 bg-stone-50/80 backdrop-blur-md z-50 supports-backdrop-filter:bg-stone-50/60">
       <nav className="container mx-auto px-4 h-16 flex items-center justify-between">
-        logo
+        {/* Logo */}
+        <Link
+          href={user ? "/dashboard" : "/"}
+          className="flex items-center gap-2 group"
+        >
+          <Image
+            src="/orange-logo.png"
+            alt="Servd Logo"
+            width={60}
+            height={60}
+            className="w-16"
+          />
+        </Link>
         <Show when="signed-out">
           <SignInButton mode="modal">
             <Button
