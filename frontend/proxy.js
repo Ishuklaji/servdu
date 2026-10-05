@@ -10,7 +10,7 @@ const isProtectedRoute = (req) => {
 };
 
 export default clerkMiddleware(async (auth, req) => {
-  // Then apply Clerk authentication
+  // Then apply Clerk authentication here
   const { userId, redirectToSignIn } = await auth();
 
   if (!userId && isProtectedRoute(req)) {
