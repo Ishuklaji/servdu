@@ -3,7 +3,7 @@ import { Button } from "./ui/button";
 import Link from "next/link";
 import Image from "next/image";
 import { Show, SignInButton, SignUpButton, UserButton } from "@clerk/nextjs";
-import { Cookie, Refrigerator, Sparkles } from "lucide-react";
+import { Cookie, Refrigerator, Sparkles } from "lucide-react"; 
 
 const Header = async () => {
   const user = null; // Replace with actual user authentication logic
