@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Show, SignInButton, SignUpButton, UserButton } from "@clerk/nextjs";
 import { Cookie, Refrigerator, Sparkles } from "lucide-react"; 
+import UserDropdown from "./UserDropdown";
 
 const Header = async () => {
   const user = null; // Replace with actual user authentication logic
@@ -23,7 +24,6 @@ const Header = async () => {
             className="w-16"
           />
         </Link>
-
         {/* Navigation Links */}
         <div className="hidden md:flex items-center space-x-8 text-sm font-medium text-stone-600">
           <Link
@@ -55,9 +55,10 @@ const Header = async () => {
               Get Started
             </Button>
           </SignUpButton>
-        </Show>
+        </Show>{" "}
+        {/* how to cook */}
         <Show when="signed-in">
-          <UserButton />
+          <UserDropdown />
         </Show>
       </nav>
     </header>
