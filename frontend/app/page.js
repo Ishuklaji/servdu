@@ -7,7 +7,7 @@ export default function Home() {
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-4">
         <Button variant="primary" size="xl">
-          hello
+          hello hi
         </Button>
       </section>
     </div>
