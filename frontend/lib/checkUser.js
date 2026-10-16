@@ -97,7 +97,7 @@ const syncUser = async (user, subscriptionTier) => {
       return null;
     }
 
-    // Create new user
+    // Create new user here
     const userData = {
       username:
         user.username || user.emailAddresses[0].emailAddress.split("@")[0],
