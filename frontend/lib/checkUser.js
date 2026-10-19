@@ -23,9 +23,9 @@ export const checkUser = async () => {
   }
 
   // Check if user has Pro plan
-  //   const { has } = await auth();
-  //   const subscriptionTier = has({ plan: "pro" }) ? "pro" : "free";
-  const subscriptionTier = "free";
+  const { has } = await auth();
+  const subscriptionTier = has({ plan: "pro" }) ? "pro" : "free";
+  // const subscriptionTier = "free";
 
   if (!inFlight.has(user.id)) {
     inFlight.set(
