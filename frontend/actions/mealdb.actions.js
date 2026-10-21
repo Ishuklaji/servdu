@@ -47,7 +47,26 @@ export async function getCategories() {
   }
 }
 
-export async function getAreas() {}
+export async function getAreas() {
+   try {
+     const response = await fetch(`${MEALDB_BASE}/list.php?a=list`, {
+       next: { revalidate: 604800 }, // Cache for 1 week
+     });
+
+     if (!response.ok) {
+       throw new Error("Failed to fetch areas");
+     }
+
+     const data = await response.json();
+     return {
+       success: true,
+       areas: data.meals || [],
+     };
+   } catch (error) {
+     console.error("Error fetching areas:", error);
+     throw new Error(error.message || "Failed to load areas");
+   }
+}
 
 export async function getMealsByCategory(category) {}
 
