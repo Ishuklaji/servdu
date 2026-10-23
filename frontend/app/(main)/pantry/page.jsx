@@ -32,7 +32,47 @@ export default function PantryPage() {
   const [editValues, setEditValues] = useState({ name: "", quantity: "" });
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  // Handle modal success (refresh items)
+  const handleModalSuccess = () => {
+    fetchItems();
+  };
+
   return (
-    <div classname="min-h-screen bg-stone-50 pt-24 pb-16"></div>
-  )
+    <div className="min-h-screen bg-stone-50 pt-24 pb-16 px-4">
+      <div className="container mx-auto max-w-5xl">
+        {/* Header */}
+        <div className="mb-4">
+          <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center gap-3">
+              <Package className="w-16 h-16 text-orange-600" />
+              <div>
+                <h1 className="text-4xl md:text-5xl font-bold text-stone-900 tracking-tight">
+                  My Pantry
+                </h1>
+                <p className="text-stone-600 font-light">
+                  Manage your ingredients and discover what you can cook
+                </p>
+              </div>
+            </div>
+
+            {/* Add to Pantry Button - Desktop */}
+            <Button
+              onClick={() => setIsModalOpen(true)}
+              className="hidden md:flex bg-orange-600 hover:bg-orange-700 text-white gap-2"
+              size="lg"
+            >
+              <Plus className="w-5 h-5" />
+              Add to Pantry
+            </Button>
+          </div>
+        </div>
+      </div>
+      {/* Add to Pantry Modal */}
+      <AddToPantryModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onSuccess={handleModalSuccess}
+      />
+    </div>
+  );
 }
