@@ -47,6 +47,21 @@ export default function AddToPantryModal({ isOpen, onClose, onSuccess }) {
             Scan your pantry with AI or add items manually
           </DialogDescription>
         </DialogHeader>
+
+        <Tabs value={activeTab} onValueChange={setActiveTab} className="mt-4">
+          <TabsList className="grid w-full grid-cols-2">
+            <TabsTrigger value="scan" className="gap-2">
+              <Camera className="w-4 h-4" />
+              AI Scan
+            </TabsTrigger>
+            <TabsTrigger value="manual" className="gap-2">
+              <Plus className="w-4 h-4" />
+              Add Manually
+            </TabsTrigger>
+          </TabsList>
+
+          
+        </Tabs>
       </DialogContent>
     </Dialog>
   );
