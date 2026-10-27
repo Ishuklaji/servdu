@@ -178,7 +178,7 @@ export default function PantryPage() {
                 </div>
                 <div className="flex-1">
                   <h3 className="font-bold text-xl mb-1">
-                    What Can I Cook Today?
+                    What Can I Cook for Today?
                   </h3>
                   <p className="text-green-100 text-sm font-light">
                     Get AI-powered recipe suggestions from your selected {items.length}{" "}
