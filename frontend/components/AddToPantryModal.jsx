@@ -57,7 +57,7 @@ export default function AddToPantryModal({ isOpen, onClose, onSuccess }) {
     onClose();
   };
 
-  // Handle manual add
+  // Handle manual add function
   const handleAddManual = async (e) => {
     e.preventDefault();
     if (!manualItem.name.trim() || !manualItem.quantity.trim()) {
