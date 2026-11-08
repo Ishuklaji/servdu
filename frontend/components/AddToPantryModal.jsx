@@ -49,6 +49,41 @@ export default function AddToPantryModal({ isOpen, onClose, onSuccess }) {
     fn: addManualItem,
   } = useFetch(addPantryItemManually);
 
+  // Handle image selection
+  const handleImageSelect = (file) => {
+    setSelectedImage(file);
+    setScannedIngredients([]); // Reset when new image selected
+  };
+
+  // Scan image
+  const handleScan = async () => {
+    if (!selectedImage) return;
+    const formData = new FormData();
+    formData.append("image", selectedImage);
+    await scanImage(formData);
+  };
+
+  // Update scanned ingredients when scan completes
+  useEffect(() => {
+    if (scanData?.success && scanData?.ingredients) {
+      setScannedIngredients(scanData.ingredients);
+      toast.success(`Found ${scanData.ingredients.length} ingredients!`);
+    }
+  }, [scanData]);
+
+  // Handle save scanned items
+  const handleSaveScanned = async () => {
+    if (scannedIngredients.length === 0) {
+      toast.error("No ingredients to save");
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("ingredients", JSON.stringify(scannedIngredients));
+    await saveScannedItems(formData);
+  };
+
+  // Reset modal state
   const handleClose = () => {
     setActiveTab("scan");
     setSelectedImage(null);
@@ -57,7 +92,16 @@ export default function AddToPantryModal({ isOpen, onClose, onSuccess }) {
     onClose();
   };
 
-  // Handle add manual 
+  // Handle save success
+  useEffect(() => {
+    if (saveData?.success) {
+      toast.success(saveData.message);
+      handleClose();
+      if (onSuccess) onSuccess();
+    }
+  }, [saveData]);
+
+  // Handle manual add
   const handleAddManual = async (e) => {
     e.preventDefault();
     if (!manualItem.name.trim() || !manualItem.quantity.trim()) {
@@ -80,6 +124,11 @@ export default function AddToPantryModal({ isOpen, onClose, onSuccess }) {
       if (onSuccess) onSuccess();
     }
   }, [addData]);
+
+  // Remove scanned ingredient
+  const removeIngredient = (index) => {
+    setScannedIngredients(scannedIngredients.filter((_, i) => i !== index));
+  };
 
   return (
     <Dialog open={isOpen} onOpenChange={handleClose}>
