@@ -28,7 +28,7 @@ export default function AddToPantryModal({ isOpen, onClose, onSuccess }) {
   const [scannedIngredients, setScannedIngredients] = useState([]);
   const [manualItem, setManualItem] = useState({ name: "", quantity: "" });
 
-  // Scan image for ingredients
+  // Scan image 
   const {
     loading: scanning,
     data: scanData,
