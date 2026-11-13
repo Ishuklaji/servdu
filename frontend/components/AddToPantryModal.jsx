@@ -35,7 +35,7 @@ export default function AddToPantryModal({ isOpen, onClose, onSuccess }) {
     fn: scanImage,
   } = useFetch(scanPantryImage);
 
-  // Save scanned items
+  // Save scanned items here
   const {
     loading: saving,
     data: saveData,
