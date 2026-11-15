@@ -16,7 +16,7 @@ export default function ImageUploader({ onImageSelect, loading }) {
       const file = acceptedFiles[0];
       if (!file) return;
 
-      // Create preview
+      // Create preview here
       const reader = new FileReader();
       reader.onloadend = () => {
         setPreview(reader.result);
