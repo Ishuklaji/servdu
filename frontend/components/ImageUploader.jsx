@@ -81,6 +81,6 @@ export default function ImageUploader({ onImageSelect, loading }) {
       </div>
     );
   }
-  
+  // Upload Mode
   return <div></div>;
 }
