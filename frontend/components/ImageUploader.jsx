@@ -82,5 +82,16 @@ export default function ImageUploader({ onImageSelect, loading }) {
     );
   }
   // Upload Mode
-  return <div></div>;
+  return (
+    <>
+      <div
+        {...getRootProps()}
+        className={`relative w-full aspect-square border-2 border-dashed rounded-2xl transition-all cursor-pointer ${
+          isDragActive
+            ? "border-orange-600 bg-orange-50 scale-[1.02]"
+            : "border-stone-300 bg-stone-50 hover:border-orange-400 hover:bg-orange-50/50"
+        }`}
+      ></div>
+    </>
+  );
 }
