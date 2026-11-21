@@ -93,7 +93,20 @@ export default function ImageUploader({ onImageSelect, loading }) {
         }`}
       >
         <input {...getInputProps()} />
-          <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 p-8 text-center"></div>
+        <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 p-8 text-center">
+          {/* Icon */}
+          <div
+            className={`p-4 rounded-full transition-all ${
+              isDragActive ? "bg-orange-600 scale-110" : "bg-orange-100"
+            }`}
+          >
+            {isDragActive ? (
+              <ImageIcon className="w-8 h-8 text-white" />
+            ) : (
+              <Camera className="w-8 h-8 text-orange-600" />
+            )}
+          </div>
+        </div>
       </div>
     </>
   );
