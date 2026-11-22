@@ -107,6 +107,17 @@ export default function ImageUploader({ onImageSelect, loading }) {
             )}
           </div>
         </div>
+        {/* Text */}
+        <div>
+          <h3 className="text-xl font-bold text-stone-900 mb-2">
+            {isDragActive ? "Drop your image here" : "Scan Your Pantry"}
+          </h3>
+          <p className="text-stone-600 text-sm max-w-sm">
+            {isDragActive
+              ? "Release to upload"
+              : "Take a photo or drag & drop an image of your fridge/pantry"}
+          </p>
+        </div>
       </div>
     </>
   );
