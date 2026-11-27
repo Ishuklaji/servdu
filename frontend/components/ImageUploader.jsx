@@ -118,6 +118,7 @@ export default function ImageUploader({ onImageSelect, loading }) {
               : "Take a photo or drag & drop an image of your fridge/pantry"}
           </p>
         </div>
+        {/* Buttons */}
       </div>
     </>
   );
